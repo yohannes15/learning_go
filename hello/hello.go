@@ -13,7 +13,7 @@ func main() { // Declare a main function (a function is a block of code that per
 	log.SetPrefix("greetings: ") // log prefix for each log entry
 	log.SetFlags(0) // without a time stamp or source file information. 
 
-	message, err := greetings.Hello("") // Request a greeting message
+	message, err := greetings.Hello("Gladys") // Request a greeting message
 	if err != nil {
 		log.Fatal(err) // If an error was returned print it to the console and exit the program
 	}
