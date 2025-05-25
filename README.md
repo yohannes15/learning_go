@@ -57,3 +57,22 @@ Also, test functions take a pointer to the testing package's testing.T type as a
 You use this parameter's methods for reporting and logging from your test. 
 The go test command executes test functions (whose names begin with Test) in test files (whose names end with _test.go). 
 You can add the -v flag to get verbose output that lists all of the tests and their results. 
+
+### Go Build
+go build [-o output] [build flags] [packages]
+Build compiles the packages named by the import paths, along with their dependencies, but it does not install the results. 
+Compiles code into an executable file but in order to run the executable, you have to specify the path to the executable or be in the same directory as the executable. 
+Need to install the executable in order to run it without specifying the path. next section. 
+
+### Go Install
+go install [build flags] [packages]
+builds and installs the packages named by the paths on the command line. Executables (main packages) are installed to the directory 
+named by the GOBIN environment variable, which defaults to $GOPATH/bin or $HOME/go/bin if the GOPATH environment variable is not set. 
+Executables in $GOROOT are installed in $GOROOT/bin or $GOTOOLDIR instead of $GOBIN. Non-executable packages are built and cached but not installed.
+
+As an alternative, if you already have a directory like $HOME/bin in your shell path and you'd like to install your Go programs there, 
+you can change the install target by setting the GOBIN variable using the go env command:
+
+$ go env -w GOBIN=/path/to/your/bin
+
+You can discover the install path by running the go list command `go list -f '{{.Target}}'`
